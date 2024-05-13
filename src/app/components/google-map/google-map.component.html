@@ -1,0 +1,29 @@
+
+<google-map #map class="google-map" [options]="mapData.options" *ngIf="(apiLoaded$ | async)">
+
+  <map-marker-clusterer [calculator]="customCalculator"  [styles]="clusterStyles">
+
+  <map-marker
+    *ngFor="let marker of mapData.markers"
+    [position]="marker"
+    [icon]="{
+      url: marker.icon,
+      scaledSize: createMarkerOptions({ width: mapData.markersOptions.scaledSize?.width, height: mapData.markersOptions.scaledSize?.height }).scaledSize,
+      labelOrigin: createMarkerOptions({ x: mapData.markersOptions.labelOrigin?.x, y: mapData.markersOptions.labelOrigin?.y }).labelOrigin
+    }"
+    [options]="{
+      label: createLabelOptions(marker)
+    }"
+  >
+  </map-marker>
+ </map-marker-clusterer>
+  <map-circle
+    *ngFor="let circle of mapData.circles"
+    [center]="circle.center"
+    [radius]="circle.radius"
+    [options]="{
+      fillColor: circle.color,
+      strokeColor: 'transparent'
+     }"
+  ></map-circle>
+</google-map>

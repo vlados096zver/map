@@ -1,0 +1,31 @@
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.map-label {
+  border-radius: 3px;
+  background-color: #212121;
+  border: none;
+  outline: none;
+  padding: 5px;
+  font-family: Roboto;
+  font-weight: 400;
+}
+
+.map-container {
+  width: 100% !important;
+}
+
+
+.google-map {
+  .cluster {
+    &[title="2"] div {
+      background-color: green;
+    }
+    &[title="3"] div {
+      background-color: yellow;
+    }
+  }
+}
